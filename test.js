@@ -14,7 +14,7 @@ const taskSchema = mongoose.Schema({
     name: String
 });
 
-taskSchema.plugin(labelsPlugin, {resource_types: ['Task']});
+taskSchema.plugin(labelsPlugin, {resource_types: ['Task'], id: 'task'});
 const Task = mongoose.model('Task', taskSchema);
 
    

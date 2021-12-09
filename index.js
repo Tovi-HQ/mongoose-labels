@@ -30,7 +30,8 @@ module.exports = exports = function(schema, options) {
 	/**
 	 * Label storage table
 	 */
-	const LabelSchema = new Schema({
+
+  const LabelSchema = new Schema({
 		name: {
 			type: String,
 			required: true,
@@ -52,7 +53,12 @@ module.exports = exports = function(schema, options) {
 			default: 'black',
 		}
 	}, {versionKey: false});
-	const Label = mongoose.model('Labels', LabelSchema);
+
+  const modelName = `Label_${options.id}`;
+  if (mongoose.modelNames().indexOf('Labels') >= 0) {
+    this.model(modelName);
+  }
+
 
 
 	/**
@@ -79,12 +85,12 @@ module.exports = exports = function(schema, options) {
 		if(!labelId){
 			return {message: 'Missing arguments'};
 		}
-		
+
 		const FOUND = await Label.findById(mongoose.Types.ObjectId(labelId));
 		if(FOUND){
 			FOUND.delete();
 		}
-		
+
 		return this;
 	};
 
@@ -136,7 +142,7 @@ module.exports = exports = function(schema, options) {
 			if (r.id && r.id.toString() === labelId.toString()) {
 				const newlabels = this.labels.pull({_id: r._id});
 				this.labels = await rearrange(newlabels, 0, 0);
-				
+
 				return this.save();
 			}
 		}
@@ -151,7 +157,7 @@ module.exports = exports = function(schema, options) {
 			if (r.id && r.id.toString() === labelId.toString()) {
 				const newlabels = this.labels.pull({_id: r._id});
 				this.labels = await rearrange(newlabels, 0, 0);
-				
+
 				return this.save();
 			}
 		}
