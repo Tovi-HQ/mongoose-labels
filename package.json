@@ -1,0 +1,23 @@
+{
+  "name": "mongoose-labels",
+  "version": "1.0.0",
+  "description": "Implement labels to a document and reorganise them",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tovi-HQ/mongoose-labels.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tovi-HQ/mongoose-labels/issues"
+  },
+  "homepage": "https://github.com/Tovi-HQ/mongoose-labels#readme",
+  "dependencies": {
+    "mongoose": "^6.0.13"
+  }
+}
